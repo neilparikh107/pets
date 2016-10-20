@@ -9,6 +9,9 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
+gem 'rolify'
+gem 'cancancan'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
