@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_one :profile
+  has_many :pets
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

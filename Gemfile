@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'devise'
 gem 'simple_form'
+gem 'country_select'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'

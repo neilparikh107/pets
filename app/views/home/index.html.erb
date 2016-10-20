@@ -3,4 +3,10 @@
 
 <% if user_signed_in? %>
   <p>User type: <span class="label label-primary"><%= current_user.user_type %></span></p>
+  <p>User role: <span class="label label-warning"><%= 'Owner' if current_user.has_role? :owner %></span></p>
+
+  <% if current_user.has_role? :owner %>
+    List your pet
+  <% end %>
+
 <% end %>
