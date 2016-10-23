@@ -27,6 +27,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
+    @pet.picture = params[:file]
     respond_to do |format|
       if @pet.save
         format.html { redirect_to profile_path(current_user.profile), notice: 'Your pet was successfully added.' }
@@ -70,6 +71,6 @@ class PetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :breed, :age, :size, :photo, :availability, :user_id)
+      params.require(:pet).permit(:name, :breed, :age, :size, :picture, :availability, :user_id)
     end
 end

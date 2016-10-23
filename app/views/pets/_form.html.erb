@@ -6,7 +6,7 @@
     <%= f.input :breed %>
     <%= f.input :age %>
     <%= f.input :size, collection: ['Very small', 'Small', 'Medium', 'Large', 'Very large'] %>
-    <%= f.input :photo %>
+    <%= f.file_field :picture %>
     <%= f.input :availability, placeholder: 'What days and times is your pet available?' %>
   </div>
 

@@ -3,10 +3,26 @@
 
 <% if user_signed_in? %>
   <p>User type: <span class="label label-primary"><%= current_user.user_type %></span></p>
-  <p>User role: <span class="label label-warning"><%= 'Owner' if current_user.has_role? :owner %></span></p>
+  <p>User role: <span class="label label-warning">
+    <% if current_user.has_role? :admin%>
+      Admin
+    <% elsif current_user.has_role? :non_admin %>
+      Non-admin
+    <% else  %>
+      Wanderer
+    <% end %>
 
-  <% if current_user.has_role? :owner %>
+   </span></p>
+
+  <% if current_user.has_role? :admin %>
     List your pet
   <% end %>
+  <% if current_user.has_role? :non_admin %>
+    Choose a pet
+  <% end %>
+
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
 
 <% end %>

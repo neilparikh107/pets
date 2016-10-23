@@ -31,7 +31,8 @@
         <td><%= profile.country %></td>
         <td><%= profile.phone %></td>
         <td><%= profile.photo %></td>
-        <td><%= profile.user %></td>
+        <td><%= profile.user.user_type %></td>
+        <td><%= image_tag(profile.picture_url(:thumbnail), :width => 50, :height => 50) %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
         <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -43,3 +44,16 @@
 <br>
 
 <%= link_to 'New Profile', new_profile_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>

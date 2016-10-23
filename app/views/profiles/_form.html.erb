@@ -10,7 +10,7 @@
     <%= f.input :state, collection: ['NSW', 'QLD', 'SA', 'VIC', 'NT', 'WA', 'ACT'] %>
     <%= f.input :country, priority: ['Australia'] %>
     <%= f.input :phone %>
-    <%= f.input :photo %>
+    <%= f.input :picture, as: :file %>
   </div>
 
   <div class="form-actions">

@@ -13,6 +13,13 @@ gem 'font-awesome-sass'
 gem 'rolify'
 gem 'cancancan'
 
+gem 'carrierwave'
+gem 'cloudinary'
+
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
