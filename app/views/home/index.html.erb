@@ -11,12 +11,18 @@
     <% else  %>
       Wanderer
     <% end %>
-
    </span></p>
 
-  <% if current_user.has_role? :admin %>
-    List your pet
-  <% end %>
+
+    List your pet:
+    <br>
+    <%=  current_user.pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+      </tr>
+      <br>
+    <% end %>
+
   <% if current_user.has_role? :non_admin %>
     Choose a pet
   <% end %>
