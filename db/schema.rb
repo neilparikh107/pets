@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023060440) do
+ActiveRecord::Schema.define(version: 20161027073826) do
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "pet_stores", force: :cascade do |t|
+    t.string   "Suburb"
+    t.string   "manager"
+    t.string   "food"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +43,8 @@ ActiveRecord::Schema.define(version: 20161023060440) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "picture"
+    t.string   "slug"
+    t.index ["slug"], name: "index_pets_on_slug", unique: true
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
@@ -42,6 +64,8 @@ ActiveRecord::Schema.define(version: 20161023060440) do
     t.string   "picture"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "slug"
+    t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -53,6 +77,16 @@ ActiveRecord::Schema.define(version: 20161023060440) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "suburb"
+    t.string   "manager"
+    t.string   "food"
+    t.integer  "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_stores_on_pet_id"
   end
 
   create_table "users", force: :cascade do |t|
