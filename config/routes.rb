@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stores
   resources :pets
   resources :profiles
   devise_for :users, controllers: { registrations: "registrations" }

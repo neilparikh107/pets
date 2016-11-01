@@ -35,5 +35,13 @@
   <%= @pet.user %>
 </p>
 
+<p>
+  <strong>Store:</strong>
+  <%= @pet.stores.each do |k| %>
+    <% k%>
+  <% end  %>
+
+</p>
+
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
 <%= link_to 'Back', pets_path %>

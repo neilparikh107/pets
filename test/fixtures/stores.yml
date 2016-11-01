@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  suburb: MyString
+  manager: MyString
+  food: MyString
+  pet: one
+
+two:
+  suburb: MyString
+  manager: MyString
+  food: MyString
+  pet: two

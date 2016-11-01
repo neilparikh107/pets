@@ -13,6 +13,17 @@ gem 'font-awesome-sass'
 gem 'rolify'
 gem 'cancancan'
 
+gem 'carrierwave'
+gem 'cloudinary'
+
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
+gem 'friendly_id', '~> 5.1.0'
+
+gem "nested_form"
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

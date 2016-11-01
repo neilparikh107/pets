@@ -5,6 +5,11 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+    @hash = Gmaps4rails.build_markers(@profiles) do |profile, marker|
+      marker.lat profile.latitude
+      marker.lng profile.longitude
+      marker.infowindow profile.first_name
+    end
   end
 
   # GET /profiles/1
@@ -30,10 +35,10 @@ class ProfilesController < ApplicationController
     # @profile.user_id = current_user.id
     respond_to do |format|
       if @profile.save
-        if @profile.user.has_role? :owner
-          format.html { redirect_to new_pet_path, notice: 'Your profile has been created.'}
+        if @profile.user.has_role? :admin
+          format.html { redirect_to new_pet_path, notice: 'Your admin profile has been created.'}
         else
-          format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+          format.html { redirect_to @profile, notice: 'Non_admin Profile was successfully created.' }
         end
         format.json { render :show, status: :created, location: @profile }
       else
@@ -75,6 +80,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :street, :suburb, :postcode, :state, :country, :phone, :photo, :user_id)
+      params.require(:profile).permit(:first_name, :last_name, :street, :suburb, :postcode, :state, :country, :phone, :picture, :user_id)
     end
 end

@@ -47,13 +47,25 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @profile.photo %>
+  <%= image_tag(@profile.picture_url(:thumbnail), :width => 50, :height => 50) %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @profile.user %>
+  <%= @profile.user.user_type %>
 </p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @profile.latitude %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @profile.longitude%>
+</p>
+
+
 
 <% if current_user.profile == @profile %>
   <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-warning' %>
@@ -66,6 +78,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <%= pet.name %>
+        <%= image_tag(pet.picture_url(:thumbnail), :width => 50, :height => 50) %>
       </div>
     </div>
   <% end %>

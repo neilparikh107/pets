@@ -26,6 +26,7 @@
         <td><%= pet.photo %></td>
         <td><%= pet.availability %></td>
         <td><%= pet.user %></td>
+        <td><%= image_tag(pet.picture_url(:thumbnail), :width => 50, :height => 50) %></td>
         <td><%= link_to 'Show', pet %></td>
         <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
         <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

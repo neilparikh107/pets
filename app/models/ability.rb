@@ -7,8 +7,8 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.has_role? :admin
         can :manage, :all
-      else
-        can :read, :all
+      else #non_admin
+        # can :read, :all
         can :manage, [Profile, Pet], :user_id => user.id
       end
     #
