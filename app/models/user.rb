@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one :profile
   has_many :pets
+  has_many :bookings
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,10 +13,8 @@ class User < ApplicationRecord
   def assign_role
     if user_type == 'owner'
       add_role :owner
-    elsif user_type == 'walker'
+    else
       add_role :walker
-    # else
-    #   add_role :poopoo  
     end
 
   end

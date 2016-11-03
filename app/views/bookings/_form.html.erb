@@ -1,0 +1,18 @@
+<%= image_tag @pet.picture_url, width: '100px' %>
+<p>Name: <%= @pet.name %></p>
+<p>Owner name: <%= @pet.user.profile.full_name %></p>
+<p>Address: <%= @pet.user.profile.full_street_address %></p>
+
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :date, discard_year: true, order: [:day, :month] %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :pet_id, input_html: { value: @pet.id } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,47 +1,32 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @pet.name %>
-</p>
+<%= image_tag @pet.picture_url, class: 'img-responsive img-thumbnail' %>
+<p class="lead"><strong><%= @pet.name %></strong></p>
 
-<p>
-  <strong>Breed:</strong>
+<p><strong>Breed:</strong>
   <%= @pet.breed %>
 </p>
-
-<p>
-  <strong>Age:</strong>
+<p><strong>Age:</strong>
   <%= @pet.age %>
 </p>
-
-<p>
-  <strong>Size:</strong>
+<p><strong>Size:</strong>
   <%= @pet.size %>
 </p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @pet.photo %>
-</p>
-
-<p>
-  <strong>Availability:</strong>
+<p><strong>Availability:</strong>
   <%= @pet.availability %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @pet.user %>
-</p>
+<%= link_to "Take me for a walk", new_booking_path(pet: @pet), class: 'btn btn-success btn-lg btn-block' %>
 
-<p>
-  <strong>Store:</strong>
-  <%= @pet.stores.each do |k| %>
-    <% k%>
-  <% end  %>
+<% if user_signed_in? %>
+    <%= link_to 'Edit', edit_pet_path(@pet) if current_user.pets.include?(@pet) %>
+<% end %>
 
-</p>
-
-<%= link_to 'Edit', edit_pet_path(@pet) %> |
-<%= link_to 'Back', pets_path %>
+      </div>
+    </div>
+  </div>
+</div>

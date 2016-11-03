@@ -1,6 +1,9 @@
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :stores
+  has_many :pet_bookings
+  has_many :bookings, through: :pet_bookings
+
   accepts_nested_attributes_for :stores
 
   mount_uploader :picture, PetPictureUploader

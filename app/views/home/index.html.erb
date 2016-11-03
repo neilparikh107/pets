@@ -20,9 +20,11 @@
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-body">
-          <%= image_tag(pet.picture_url, class: 'img-responsive') %>
+          <%= link_to pet_path(pet) do %>
+            <%= image_tag(pet.picture_url, class: 'img-responsive') %>
+          <% end %>
           <br>
-          <%= pet.name %>
+          <%= link_to pet.name, pet_path(pet) %>
         </div>
       </div>
     </div>
