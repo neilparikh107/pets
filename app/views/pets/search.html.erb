@@ -1,0 +1,22 @@
+<!-- Showing a list of pets that live in the search area -->
+<div class="row">
+  <!-- Here's the loop of each nearby profile -->
+  <% @nearby_profiles.each do |profile| %>
+    <!-- For each profile we find the user and the associated pets -->
+    <% profile.user.pets.with_picture.each do |pet| %>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          
+              <%= image_tag(pet.picture_url, class: 'img-responsive') %>
+
+            <br>
+            <%= pet.name %>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>

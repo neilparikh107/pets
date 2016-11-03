@@ -1,5 +1,33 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron">
+  <h1>Pet Playmates</h1>
+  <p>Get cuddles from dogs in your area.</p>
+  <form class="form-inline" action="/pets/search" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Search</label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Find dogs in your area" autofocus name="area">
+      <div class="input-group-addon"><button type="submit" class="clear-button"><i class="fa fa-search"></i></button></div>
+    </div>
+  </div>
+
+</form>
+</div>
+
+<div class="row">
+  <% @pets.each do |pet| %>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= image_tag(pet.picture_url, class: 'img-responsive') %>
+          <br>
+          <%= pet.name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <% if user_signed_in? %>
   <p>User type: <span class="label label-primary"><%= current_user.user_type %></span></p>

@@ -9,4 +9,12 @@ class Pet < ApplicationRecord
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  def self.with_picture
+    where('picture IS NOT NULL')
+  end
+
+  def has_picture?
+    picture == nil
+  end
 end

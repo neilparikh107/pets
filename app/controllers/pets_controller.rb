@@ -2,6 +2,12 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
+  # Here we are finding profiles that are near the postcode provided in the search
+  # We are also eager loading the user and associated pets for more efficient database calls
+  def search
+    @nearby_profiles = Profile.includes(user: :pets ).near(params[:area] + ', Australia', 5, units: :km)
+
+  end
   # GET /pets
   # GET /pets.json
   def index

@@ -11,11 +11,11 @@ class User < ApplicationRecord
 
   def assign_role
     if user_type == 'owner'
-      add_role :admin
+      add_role :owner
     elsif user_type == 'walker'
-      add_role :non_admin
-    else
-      add_role :poopoo  
+      add_role :walker
+    # else
+    #   add_role :poopoo  
     end
 
   end
