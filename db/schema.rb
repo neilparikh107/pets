@@ -44,14 +44,6 @@ ActiveRecord::Schema.define(version: 20161103075450) do
     t.index ["pet_id"], name: "index_pet_bookings_on_pet_id"
   end
 
-  create_table "pet_stores", force: :cascade do |t|
-    t.string   "Suburb"
-    t.string   "manager"
-    t.string   "food"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "pets", force: :cascade do |t|
     t.string   "name"
     t.string   "breed"

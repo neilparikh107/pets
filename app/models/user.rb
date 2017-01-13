@@ -12,11 +12,10 @@ class User < ApplicationRecord
 
   def assign_role
     if user_type == 'owner'
-      add_role :owner
+      add_role :popopo
     else
       add_role :walker
     end
-
   end
 
 end
